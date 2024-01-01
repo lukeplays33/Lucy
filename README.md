@@ -48,6 +48,7 @@ Changes into this:
 
 ``` javascript
 let downloadManager = new downloadManager();
+
 downloadManager.file = 'https://th.bing.com/th/id/OIP.PuwQXn2azvbG10DFZO1f4AHaFP?rs=1&pid=ImgDetMain';
 downloadManager.mimeType = 'jpg';
 downloadManager.download();
