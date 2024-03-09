@@ -12,14 +12,18 @@ def select_zip_file():
     
     if not pyuac.isUserAdmin(): # Lucy requires admin perms to run properly.
         print("Script is not running as administrator. Requesting elevation...")
+        print('Please allow administration permissions so the interpreter can read and execute your code, press enter to open prompt.')
+        input()
         pyuac.runAsAdmin()
     else:
         if len(sys.argv) > 1:
-            file_path = sys.argv[1]
-        else:
-            print('No file openend with lucy, select a file to start.')
+            file_path = sys.argv[2]
+            
+        if not file_path.endswith('.lucy'):
+            print('File is not a .lucy file, please select a .lucy file')
             file_path = filedialog.askopenfilename(filetypes=[("Zip Files", "*.lucy")])
             
+        print(file_path)
         try:
             with zipfile.ZipFile(file_path, "r") as zip_ref:
                 zip_ref.extractall('extracted_contents')
