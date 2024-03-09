@@ -1,0 +1,1 @@
+python -m PyInstaller --onefile lucy.py - to build to .exe
