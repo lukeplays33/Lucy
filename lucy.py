@@ -7,16 +7,11 @@ import sys
 import pyuac
 
 def select_zip_file():
-    root = tk.Tk()
-    root.withdraw()  # Hide the main window
-    
     if not pyuac.isUserAdmin(): # Lucy requires admin perms to run properly.
         print("Script is not running as administrator. Requesting elevation...")
-        print('Please allow administration permissions so the interpreter can read and execute your code, press enter to open prompt.')
-        input()
         pyuac.runAsAdmin()
     else:
-        if len(sys.argv) > 1:
+        if len(sys.argv) > 2:
             file_path = sys.argv[2]
             
         if not file_path.endswith('.lucy'):
@@ -39,6 +34,9 @@ def select_zip_file():
             print("Invalid zip file. Please select a valid zip file.")
 
 if __name__ == "__main__":
+    root = tk.Tk()
+    root.withdraw()  # Hide the main window
+    
     select_zip_file()
 
     print("If terminal didn't close automatically, press Enter to close it.")
